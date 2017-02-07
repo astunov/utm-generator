@@ -1,0 +1,18 @@
+{
+  "plugins": [
+    "react",
+    "flowtype"
+  ],
+  "extends": ["eslint-config-airbnb", "plugin:react/recommended", "plugin:flowtype/recommended"],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "jsx-a11y/no-marquee": 0
+  }
+}
