@@ -10,7 +10,8 @@
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
     "eslint": "eslint --cache --fix ./src/*",
-    "flow": "flow ./src/*"
+    "flow": "flow ./src/*",
+    "prepush": "npm run flow"
   },
   "author": "",
   "license": "ISC",
