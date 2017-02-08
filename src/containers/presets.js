@@ -1,13 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Preset from '../components/preset';
 import { changeActivePreset } from '../actions/index';
 
 class Presets extends Component {
+  propTypes = {
+    changeActivePreset: PropTypes.func,
+
+  }
+  handleToggle = (e) => {
+    e.preventDefault();
+    const val = e.target.text.toLowerCase();
+    this.props.changeActivePreset(val);
+  }
   render() {
     const renderPresets = this.props.presets.list.map((preset) => {
-      const classList  = preset === this.props.presets.activePreset ? 'collection-item active' : 'collection-item'
+      const classList = preset === this.props.presets.activePreset ? 'collection-item active' : 'collection-item';
       const presetTitle = preset[0].toUpperCase() + preset.slice(1);
       return (
         <Preset
@@ -26,11 +35,6 @@ class Presets extends Component {
         </div>
       </div>
     );
-  }
-  handleToggle = e => {
-    e.preventDefault();
-    const val = e.target.text.toLowerCase();
-    this.props.changeActivePreset(val);
   }
 }
 

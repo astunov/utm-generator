@@ -1,15 +1,16 @@
 // @flow
 import React, { PropTypes } from 'react';
 
-const preset = (props:Object) => {
+const preset = (props: Object) => {
   const { presetTitle, handleToggle, classList } = props;
   return (
-    <button
+    <a
+      href="#"
       onClick={handleToggle}
       className={classList}
     >
       {presetTitle}
-    </button>
+    </a>
   );
 };
 
