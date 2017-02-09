@@ -1,11 +1,10 @@
-// @flow
 import type { Action } from '../actions/types';
+import defaultPresets from '../../data/default-presets';
 
 type Presets = {
-  list: Array<string>,
+  list: Array<Object>,
   activePreset: string
-}
-const defaultPresets = { list: ['push', 'email'], activePreset: 'push' };
+};
 
 export default function (presets: Presets = defaultPresets, action: Action) {
   const { type, payload } = action;

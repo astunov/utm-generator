@@ -18,8 +18,8 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
+        test: /\.s?css$/,
+        use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           loader: [
             'css-loader?minimize=true',
@@ -30,7 +30,7 @@ module.exports = {
       },
       {
           test: /\.(eot|svg|ttf|woff|woff2)$/,
-          loader: 'file-loader?name=public/fonts/[name].[ext]'
+          use: 'file-loader?name=public/fonts/[name].[ext]'
       }
     ]
   },

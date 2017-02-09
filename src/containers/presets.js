@@ -16,8 +16,9 @@ class Presets extends Component {
   }
   render() {
     const renderPresets = this.props.presets.list.map((preset) => {
-      const classList = preset === this.props.presets.activePreset ? 'collection-item active' : 'collection-item';
-      const presetTitle = preset[0].toUpperCase() + preset.slice(1);
+      const { label } = preset;
+      const classList = label === this.props.presets.activePreset ? 'collection-item active' : 'collection-item';
+      const presetTitle = label[0].toUpperCase() + label.slice(1);
       return (
         <Preset
           key={presetTitle}

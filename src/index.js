@@ -2,7 +2,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import 'materialize-css/sass/materialize.scss';
+// import 'materialize-css/dist/js/materialize.min.js';
+// import 'materialize-css/sass/materialize.scss';
 
 import App from './components/app';
 import store from './store';
@@ -13,4 +14,3 @@ ReactDOM.render(
     <App />
   </Provider>
 , document.querySelector('.container'));
-
