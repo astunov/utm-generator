@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Select from 'react-select';
-import 'react-select/dist/react-select.min.css'
+import 'react-select/dist/react-select.min.css';
 
 import { changeValue } from '../actions/form';
 
@@ -18,7 +18,7 @@ class Form extends Component {
         ]
       }
     }
-  }
+  };
   componentWillReceiveProps() {
     this.setState({
       form: {
@@ -29,23 +29,8 @@ class Form extends Component {
       }
     });
   }
-  handleSourceChange = (value) => {
-    this.props.changeValue();
-    const { val } = this.state.form.source;
-    this.setState((prevState) => {
-      return {
-        form: {
-          source: {
-            val: value
-          }
-        }
-      }
-    });
-  }
-
-  generateUtm = () => {
-    return this.state.form.source.val.value;
-  }
+  // handleSourceChange = (value) => {
+  // }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -61,39 +46,35 @@ class Form extends Component {
   }
 
   renderFormFields = (fields) => {
-
-    return fields.map(field => {
-      return <div>1</div>;
-      // const { type } = field;
-      // рендерим каждое поле в зависимости от типа
-
-      // switch (type) {
-      //   case('text'):
-
-      //   case('select'):
-      //     return (
-      //       <Select
-      //          name="form-field-name"
-      //          value={source.val}
-      //          options={options}
-      //          onChange={this.handleSourceChange}
-      //        />
-      //     );
-      // }
-    })
+    return fields.map((field) => {
+      const { type, values, title } = field;
+      switch (type) {
+        case ('select'):
+          return (
+            <Select
+              name="form-field-name"
+              key={title}
+              value=""
+              options={values}
+            />
+          );
+        default:
+          return (
+            <div className="input-field">
+              <input id="last_name" type="text" className="validate" />
+              <label htmlFor="last_name">placeholder</label>
+            </div>
+          );
+      }
+    });
   }
 
   render() {
-
-    const { source } = this.state.form;
-    const options = this.props.preset.fields.utmSource;
-    console.log(this.props.preset.fields);
-
     return (
       <form onSubmit={this.handleSubmit}>
-      { this.renderFormFields(this.props.preset.fields) }
+        { this.renderFormFields(this.props.preset.fields) }
         <div className="input-field">
-          <textarea id="textarea1" className="materialize-textarea" value={this.state.form.utm}></textarea>
+          <textarea id="textarea1" className="materialize-textarea" value={this.state.form.utm} />
         </div>
         <button className="waves-effect waves-light btn"> Submit </button>
       </form>
@@ -105,9 +86,8 @@ class Form extends Component {
 function mapStateToProps(state) {
   return {
     common: state.presets.common,
-    preset: state.presets.list.filter((preset) => preset.label === state.presets.activePreset)[0]
-  }
+    preset: state.presets.list.filter(preset => preset.label === state.presets.activePreset)[0]
+  };
 }
 
 export default connect(mapStateToProps, { changeValue })(Form);
-
