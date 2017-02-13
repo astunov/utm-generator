@@ -6,8 +6,7 @@ import { changeActivePreset } from '../actions/index';
 
 class Presets extends Component {
   propTypes = {
-    changeActivePreset: PropTypes.func,
-
+    changeActivePreset: PropTypes.func
   }
   handleToggle = (e) => {
     e.preventDefault();

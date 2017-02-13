@@ -2,31 +2,52 @@ const defaultPresets = {
   list: [
       {
         label: 'email',
-        fields: {
-          utmSource: [
-            {
-              value: 'email-eMS',
-              label: 'Emarsys'
-            },
-            {
-              value: 'email-MT',
-              label: 'Metak'
-            },
-            {
-              value: 'email-fbs',
-              label: 'Fbs'
-            },
-            {
-              value: 'email-metak',
-              label: 'email-metak'
-            },
-            {
-              value: 'email-gr360',
-              label: 'GetResponse'
-            }
-          ],
-          place: ['header', 'body', 'footer']
-        }
+        fields: [
+          {
+            title: 'utmSource',
+            type: 'select',
+            values: [
+              {
+                value: 'email-eMS',
+                label: 'Emarsys'
+              },
+              {
+                value: 'email-MT',
+                label: 'Metak'
+              },
+              {
+                value: 'email-fbs',
+                label: 'Fbs'
+              },
+              {
+                value: 'email-metak',
+                label: 'email-metak'
+              },
+              {
+                value: 'email-gr360',
+                label: 'GetResponse'
+              }
+            ]
+          },
+          {
+            title: 'place',
+            type: 'text',
+            values: [
+              {
+                value: 'header',
+                label: 'Header'
+              },
+              {
+                value: 'body',
+                label: 'Body'
+              },
+              {
+                value: 'footer',
+                label: 'Footer'
+              }
+            ]
+          }
+        ]
       },
       {
         label: 'push',
@@ -57,7 +78,7 @@ const defaultPresets = {
       content: ''
     }
   },
-  activePreset: 'push'
+  activePreset: 'email'
 };
 
 export default defaultPresets;

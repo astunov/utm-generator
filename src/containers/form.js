@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Select from 'react-select';
 import 'react-select/dist/react-select.min.css'
 
+import { changeValue } from '../actions/form';
 
 class Form extends Component {
   state = {
@@ -29,6 +30,7 @@ class Form extends Component {
     });
   }
   handleSourceChange = (value) => {
+    this.props.changeValue();
     const { val } = this.state.form.source;
     this.setState((prevState) => {
       return {
@@ -58,18 +60,38 @@ class Form extends Component {
     });
   }
 
+  renderFormFields = (fields) => {
+
+    return fields.map(field => {
+      return <div>1</div>;
+      // const { type } = field;
+      // рендерим каждое поле в зависимости от типа
+
+      // switch (type) {
+      //   case('text'):
+
+      //   case('select'):
+      //     return (
+      //       <Select
+      //          name="form-field-name"
+      //          value={source.val}
+      //          options={options}
+      //          onChange={this.handleSourceChange}
+      //        />
+      //     );
+      // }
+    })
+  }
+
   render() {
+
     const { source } = this.state.form;
     const options = this.props.preset.fields.utmSource;
+    console.log(this.props.preset.fields);
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <Select
-          name="form-field-name"
-          value={source.val}
-          options={options}
-          onChange={this.handleSourceChange}
-        />
+      { this.renderFormFields(this.props.preset.fields) }
         <div className="input-field">
           <textarea id="textarea1" className="materialize-textarea" value={this.state.form.utm}></textarea>
         </div>
@@ -87,5 +109,5 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Form);
+export default connect(mapStateToProps, { changeValue })(Form);
 
